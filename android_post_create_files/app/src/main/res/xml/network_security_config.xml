@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Hum Raah — Network Security Config
+
+  Yeh file Android ko allow karti hai plain HTTP (non-https) requests bhejne
+  ke liye, sirf un domains/IPs ke liye jo neeche list mein hain. Android 9+
+  by default sirf HTTPS allow karta hai, is file ke bina backend se
+  connection "Cleartext not permitted" error ke sath fail ho jayega.
+
+  IMPORTANT: Apna laptop ka IP address (jo APK build karte waqt
+  api_constants.dart mein daala tha) yahan bhi same daalo neeche.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <!-- Android Emulator default -->
+        <domain includeSubdomains="false">10.0.2.2</domain>
+        <!-- Apna laptop IP yahan daalo (jo api_constants.dart mein use kiya) -->
+        <domain includeSubdomains="false">192.168.1.45</domain>
+        <!-- Agar deployed backend HTTPS pe hai (Render/Railway), iski zaroorat nahi -->
+    </domain-config>
+</network-security-config>
